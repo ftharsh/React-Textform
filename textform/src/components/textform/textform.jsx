@@ -10,6 +10,10 @@ export default function Textform(props) {
   const handleOnchange = (event) => {
     setText(event.target.value); //use handle onchange so that it could  what ever we write in textarea it could b intialised to setText
   };
+  const handleClearclick = () => {
+    let newText = " ";
+    setText(newText);
+  };
   const [text, setText] = useState("Enter your text here !");
   return (
     <div>
@@ -30,6 +34,18 @@ export default function Textform(props) {
       >
         Convert to UPPERCASE
       </button>
+      <button className="btn btn-primary mx-3" onClick={handleClearclick}>
+        Clear Text
+      </button>
+
+      <div className="container my-3">
+        <h1>Your text summary</h1>
+        <p>
+          {text.split(" ").length - 1} words and {text.length} characters
+        </p>
+
+        <p>{0.008 * text.split(" ").length} minutes to read</p>
+      </div>
     </div>
   );
 }
